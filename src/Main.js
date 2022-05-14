@@ -34,7 +34,7 @@ return (
 			})
 		}
 
-		<AddNew add={addNew} demo={emptyTodo}/>
+		<AddNew add={addNew}/>
 		</div>
 	)
 }
