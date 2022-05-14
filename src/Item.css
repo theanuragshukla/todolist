@@ -1,0 +1,13 @@
+.item {
+	width: 90%;
+	background:orange;
+	min-height: 70px;
+	margin-bottom: 20px;
+}
+.layer1 {
+	display: flex;
+	align-items: center;
+}
+.strike {
+	text-decoration: line-through;
+}

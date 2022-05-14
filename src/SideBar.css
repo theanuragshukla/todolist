@@ -1,0 +1,27 @@
+.sideBar {
+    width: 100vw;
+    background: #1d293a;
+    position: absolute;
+    top: 65px;
+    left: 0;
+    z-index: 0;
+    transition: 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    color: white;
+    flex-direction: column;
+    height: auto;
+}
+.wrapperNav {
+    border: 0px solid;
+    transition: 0.3s;
+
+}
+.hidden {
+    height: 0;
+}
+.visible {
+    height: auto;
+}
