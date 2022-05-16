@@ -1,21 +1,32 @@
 import React,{useState} from "react"
-
-const AddNew=(props)=>{
+import './AddNew.css'
+const AddNew=({submit})=>{
 	const [state,setState]=useState({
-
+	done:false,
+		
 	})
 	const handleChange = (e) =>{
 		const x = e.target.name
 		const y = e.target.value
 		setState(prev=>{
-			prev.x=y
+			prev[x]=y
 			return prev 
 	})
-
-
+	}
+	const submitForm=()=>{
+		submit(state)
+	}
 	return(
-		<div onClick={()=>{props.add(props.demo)}}>AddNew</div>
-		
+		<div className="inpMain">
+		<input className="inp titleInp" value={state.title}  onChange={handleChange}  placeholder="Enter the Title" name="title" type="text"/>
+		<input  className="inp descInp" value={state.desc} onChange={handleChange} placeholder="Enter description(optional)" name="desc" type="text"/>
+<div className="deadlineInpDiv">
+		<input className="inp deadlineInp" value={state.time} onChange={handleChange} placeholder="time" name="time" type="time"/>
+		<input className="inp deadlineInp" value={state.date} onChange={handleChange} placeholder="date" name="date" type="date"/>
+		</div>
+		<button onClick={submitForm} className="submitBtn">Add Task</button>
+		</div>
 	)
+
 }
 export default AddNew

@@ -38,11 +38,12 @@ class NavBar extends React.Component {
 
     render() {
         const style = {
-            background:this.state.prevScrollpos==0 ? "blue" : "red",
+            background:this.state.prevScrollpos==0 ? "#222831" : "#393E46",
         }
         return(
             <div id="nav" style={style} className={this.state.visible ? "navBar": "navBar navbar-hidden"}>
         <Ham visible={this.state.visible} />
+			<h2>ToDo-List</h2>
             </div>
         )
     }

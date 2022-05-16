@@ -1,0 +1,12 @@
+.ctrl,.tools {
+	min-height: 60px;
+	width: 90%;
+	background-color: #F97068;
+	margin-top: 30px;
+	border-radius: 15px 15px 0 0;
+}
+.tools {
+	min-height:15px;
+	margin-top: 0;
+	border-radius: 0 0 15px 15px;
+}
