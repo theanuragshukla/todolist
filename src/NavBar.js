@@ -4,6 +4,7 @@ import React, {
 import './NavBar.css'
 import Ham from './HamBurger'
 import HideSideBar from './HamBurger'
+import {Link} from 'react-router-dom'
 
 class NavBar extends React.Component {
     constructor(props) {
@@ -43,7 +44,9 @@ class NavBar extends React.Component {
         return(
             <div id="nav" style={style} className={this.state.visible ? "navBar": "navBar navbar-hidden"}>
         <Ham visible={this.state.visible} />
-			<h2>ToDo-List</h2>
+	<h2>	<Link to='/'>
+			ToDo-List
+		</Link></h2>
             </div>
         )
     }

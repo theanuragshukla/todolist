@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 import './SideBar.css'
 class SideBar extends React.Component {
     constructor(props) {
@@ -9,7 +10,11 @@ class SideBar extends React.Component {
         return (
             <div className="sideBar">
             <div className={this.props.visible ? 'wrapperNav visible': 'wrapperNav hidden'}>
-			<h1>hello</h1>
+			<h1>
+			<Link to='login'>
+			Login
+			</Link>
+			</h1>
             </div>
             </div>
         )
