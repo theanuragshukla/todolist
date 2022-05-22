@@ -15,6 +15,12 @@ class SideBar extends React.Component {
 			Login
 			</Link>
 			</h1>
+			<h1>
+			<Link to='signup'>
+			Signup
+			</Link>
+			</h1>
+        
             </div>
             </div>
         )
