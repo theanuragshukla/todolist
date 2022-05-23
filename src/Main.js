@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import './Main.css'
 import Item from './Item'
 import CtrlBar from './CtrlBar'
@@ -9,12 +9,39 @@ const Main = (props) => {
 		done:false,
 		title:"hello world Amet necessitatibus assumenda quod quo animi. ",
 		desc:"Sit iure officia dignissimos quos porro? Voluptatibus quisquam magni voluptatum alias iusto. Aperiam maiores numquam illo et dicta Velit beatae voluptas laborum cupiditate rerum.",
-		time:"today",
-		deadline:"tomorrow"
-
+		time:"time",
+		date:"date",
+		starttime:"time",
+		startdate:"date"
 	}
-	const [todos,setTodos] = useState([emptyTodo])
+	const [todos,setTodos] = useState([])
 	const [count,setCount] = useState(1)
+	
+
+function getDate() {
+    var now = new Date();
+    return ((now.getFullYear()) + '-' + (now.getMonth()+1) + '-' + now.getDate())
+}
+function getTime() {
+    var now = new Date();
+    return (now.getHours() + ':' + ((now.getMinutes() < 10) ? ("0" + now.getMinutes()) : (now.getMinutes())))
+}
+const fetchTodos=async ()=>{
+		await fetch('/gettodos', {
+			method: 'GET',
+			crossdomain: true,
+			withCredentials:'include'
+		})
+			.then(res => res.json())
+			.then(res =>setTodos(res.status?res.result:[]))
+		
+	
+}
+
+useEffect(()=>{
+		fetchTodos()
+},[])
+
 const getDateTime=()=> {
         var now     = new Date(); 
         var year    = now.getFullYear();
@@ -41,19 +68,55 @@ const getDateTime=()=> {
         var dateTime = year+'-'+month+'-'+day+'|'+hour+':'+minute;   
          return dateTime;
     }
+const updatetodostatus=(id)=>{
+	alert(id)
+	fetch('/updatetodostatus', {
+			method: 'POST',
+			headers: {
+				'Accept': 'application/json, text/plain, */*',
+				'Content-Type': 'application/json'
+			},
+		body: JSON.stringify({"id":id})
+		})
+			.then(res=>res.json())
+			.then(res=>console.log(res))
 
+}
+const deleteme=async (id)=>{
+	fetch('/deletetodo', {
+			method: 'POST',
+			headers: {
+				'Accept': 'application/json, text/plain, */*',
+				'Content-Type': 'application/json'
+			},
+		body: JSON.stringify({"id":id})
+		})
+			.then(res=>res.json())
+			.then(res=>console.log(res))
+	fetchTodos()
+}
 	const addNew =async (newObj) => {
 		setCount(async prev=>{
 			return(prev+1)
 		})
 		newObj.id=count
-		newObj.deadline=newObj.date+'|'+newObj.time
-		newObj.time=getDateTime()
+		newObj.startdate=getDate()
+		newObj.starttime=getTime()
 		setTodos(prev=>{
 			return (
 				[...prev,newObj]
 			)
 		})
+		fetch('/addnewtodo', {
+			method: 'POST',
+			headers: {
+				'Accept': 'application/json, text/plain, */*',
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(newObj)
+		})
+			.then(res=>res.json())
+			.then(res=>console.log(res))
 	}
 	return (
 		<>
@@ -61,7 +124,8 @@ const getDateTime=()=> {
 		<div className='main'>
 		{
 			todos.map(todo => {
-				return(<Item obj={todo} key = {todo.title+todo.id} />)
+
+				return(<Item obj={todo} update ={updatetodostatus} deleteme={deleteme}  key = {todo.title+todo.id} />)
 			})
 		}
 

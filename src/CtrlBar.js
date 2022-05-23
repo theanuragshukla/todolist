@@ -5,12 +5,12 @@ const CtrlBar = ({submit}) => {
 	const [state,setState]=useState(true)
 	return (
 		<>
-		<div className="ctrl" onClick={()=>{
+		<div className="ctrl" >
+		<div className="addnewbtn" onClick={()=>{
 			setState(prev => {
 				return !prev
 			})
-		}}>
-		
+		}}>{state?"×":"+"}</div>
 		</div>
 		<div className="tools">
 		{

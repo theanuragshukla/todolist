@@ -15,14 +15,15 @@ const AddNew=({submit})=>{
 	}
 	const submitForm=()=>{
 		submit(state)
+		alert(JSON.stringify(state))
 	}
 	return(
 		<div className="inpMain">
 		<input className="inp titleInp" value={state.title}  onChange={handleChange}  placeholder="Enter the Title" name="title" type="text"/>
 		<input  className="inp descInp" value={state.desc} onChange={handleChange} placeholder="Enter description(optional)" name="desc" type="text"/>
 <div className="deadlineInpDiv">
-		<input className="inp deadlineInp" value={state.time} onChange={handleChange} placeholder="time" name="time" type="time"/>
-		<input className="inp deadlineInp" value={state.date} onChange={handleChange} placeholder="date" name="date" type="date"/>
+		<input className="inp deadlineInp" value={state.endtime} onChange={handleChange} placeholder="time" name="endtime" type="time"/>
+		<input className="inp deadlineInp" value={state.enddate} onChange={handleChange} placeholder="date" name="enddate" type="date"/>
 		</div>
 		<button onClick={submitForm} className="submitBtn">Add Task</button>
 		</div>
