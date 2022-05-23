@@ -7,6 +7,17 @@ const Login =()=>{
 		user:"",
 		pas:""
 	})
+
+	const handleChange=(e)=>{
+		const x = e.target.name
+		const y = e.target.value
+		setData(prev=>{
+			prev[x]=y
+			return prev 
+		})
+
+	}
+	
 const submit = ()=>{
 		const user = data.user
 		const pass =data.pass
