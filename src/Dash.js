@@ -10,7 +10,7 @@ const Dash = ()=>{
 	})	
 	const navigate = useNavigate()
 	const verify =async ()=>{
-		await fetch('/checkAuth', {
+		await fetch('https://dontknowthename.herokuapp.com/checkAuth', {
 			method: 'GET',
 			crossdomain: true,
 			withCredentials:'include'

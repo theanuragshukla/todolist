@@ -7,25 +7,10 @@ const Login =()=>{
 		user:"",
 		pas:""
 	})
-	const test = ()=>{
-		fetch('/test', {
-			method: 'GET',
-			crossdomain: true,
-			withCredentials:'include'
-		})}
-		const handleChange=(e)=>{
-		const x = e.target.name
-		const y = e.target.value
-		setData(prev=>{
-			prev[x]=y
-			return prev 
-		})
-
-	}
-	const submit = ()=>{
+const submit = ()=>{
 		const user = data.user
 		const pass =data.pass
-		fetch('/let-me-in', {
+		fetch('https://dontknowthename.herokuapp.com/let-me-in', {
 			method: 'POST',
 			crossdomain: true,
 			withCredentials:'include',

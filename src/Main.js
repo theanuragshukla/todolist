@@ -27,7 +27,7 @@ function getTime() {
     return (now.getHours() + ':' + ((now.getMinutes() < 10) ? ("0" + now.getMinutes()) : (now.getMinutes())))
 }
 const fetchTodos=async ()=>{
-		await fetch('/gettodos', {
+		await fetch('https://dontknowthename.herokuapp.com/gettodos', {
 			method: 'GET',
 			crossdomain: true,
 			withCredentials:'include'
@@ -70,7 +70,7 @@ const getDateTime=()=> {
     }
 const updatetodostatus=(id)=>{
 	alert(id)
-	fetch('/updatetodostatus', {
+	fetch('https://dontknowthename.herokuapp.com/updatetodostatus', {
 			method: 'POST',
 			headers: {
 				'Accept': 'application/json, text/plain, */*',
@@ -83,7 +83,7 @@ const updatetodostatus=(id)=>{
 
 }
 const deleteme=async (id)=>{
-	fetch('/deletetodo', {
+	fetch('https://dontknowthename.herokuapp.com/deletetodo', {
 			method: 'POST',
 			headers: {
 				'Accept': 'application/json, text/plain, */*',
@@ -107,7 +107,7 @@ const deleteme=async (id)=>{
 				[...prev,newObj]
 			)
 		})
-		fetch('/addnewtodo', {
+		fetch('https://dontknowthename.herokuapp.com/addnewtodo', {
 			method: 'POST',
 			headers: {
 				'Accept': 'application/json, text/plain, */*',

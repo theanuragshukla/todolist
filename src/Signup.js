@@ -12,7 +12,7 @@ const Signup =()=>{
 
 	const submit=async ()=>{
 if(await checkAll(data)){
-		fetch('/add-new-user', {
+		fetch('https://dontknowthename.herokuapp.com/add-new-user', {
 			method: 'POST',
 			headers: {
 				'Accept': 'application/json, text/plain, */*',
