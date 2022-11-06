@@ -21,7 +21,7 @@ const Login =()=>{
 const submit = ()=>{
 		const user = data.user
 		const pass =data.pass
-		fetch('https://dontknowthename.herokuapp.com/let-me-in', {
+		fetch('/let-me-in', {
 			method: 'POST',
 			crossdomain: true,
 			withCredentials:'include',
